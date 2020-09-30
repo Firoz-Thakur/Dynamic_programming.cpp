@@ -17,9 +17,9 @@ int lcs(string a,string b)
   	{
   		int q=0;
   		if(a[i-1]==b[j-1])
-  		   q=1+dp[i-1][j-1];
+  		   q=1+dp[i-1][j-1];  //diagonal
   		else
-  		   q=max(dp[i-1][j],dp[i][j-1]);
+  		   q=max(dp[i-1][j],dp[i][j-1]); //finding the maximum of previus colum and roows
   	
   	    dp[i][j]=q;
   	}
