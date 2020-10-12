@@ -9,7 +9,8 @@ break an item, either pick the complete item, or don’t pick it (0-1 property).
 using namespace std;
 
  int dp[1002][1002];
-int knapsack(int wt[],int val[],int w,int n)
+// memset(dp,-1,sizeof(dp));
+int knapsack(int wt[],int val[],int w,int n,int dp[][1002])
  {
      if(n==0 ||w==0)
       return 0;
@@ -18,11 +19,11 @@ int knapsack(int wt[],int val[],int w,int n)
         return dp[n][w];
      if(wt[n-1]<=w)
       {
-          dp[n][w]=max((val[n-1]+knapsack(wt,val,w-wt[n-1],n-1)),  knapsack(wt,val,w,n-1));
+          dp[n][w]=max((val[n-1]+knapsack(wt,val,w-wt[n-1],n-1,dp)),  knapsack(wt,val,w,n-1,dp));
       }    
      else
      {
-         dp[n][w]=knapsack(wt,val,w,n-1);
+         dp[n][w]=knapsack(wt,val,w,n-1,dp);
       
      }
    
@@ -63,7 +64,7 @@ int main() {
 	while(t--)
 	{
 	   
-      //  memset(dp,-1,sizeof(dp));
+       memset(dp,-1,sizeof(dp));
 	    
 	    int n,w;
 	    cin>>n;
@@ -79,8 +80,10 @@ int main() {
 	        cin>>wt[i];
 	    }
 	
-	//cout<<knapsack(wt,val,w,n)<<endl;
-	cout<<BU_knapsack(wt,val,w,n)<<endl;
+	cout<<knapsack(wt,val,w,n,dp)<<endl;
+	
+	
+//	cout<<BU_knapsack(wt,val,w,n)<<endl;
 	}
 	
 	return 0;
