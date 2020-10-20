@@ -61,3 +61,32 @@ public:
         return help(nums,sum,0,n);    
     }
 };
+
+
+
+Other easy hack :
+
+if total sum%2==0 it mean we can parition the array ,but if the sum%2==1 it means there is no way to parition the array into two equal half.
+
+now if sum%2==0 it mean we can divide the array into the two eqyal subset,whose onne subset will be sum/2 and other will be sum/2.
+ 
+ now we will find the only one one half (only one subset having sum=sum/2) if it found it means other half would also be there.
+ 
+ 
+
+bool canPartition(vector<int>& set) {
+        
+        int sum1=0;
+       // memset(dp,-1,sizeof(dp));
+        for(int i=0;i<set.size();i++)
+        {
+            sum1=sum1+set[i];
+        }
+        if(sum1%2==1)
+             return false;
+        
+        int n=set.size();
+        int sum=sum1/2;
+        
+       return find_subset(set,sum,n);   
+    
