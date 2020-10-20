@@ -70,9 +70,18 @@ Expected Auxiliary Space: O(N*|sum of array elements|)
      range - 2*s2 =min
      
      we have considered that s1> s2
-     s2 will lie  left side of range/2,and s1 will lie on the right side of the range/2
-     
-     
+     s2 will lie  left side of range/2,and s1 will lie on the right side of the range/2,
+	
+	Input: N = 4, arr[] = {1, 6, 11, 5} 
+	
+	for the input ,the range will be 0 to 23
+       
+         betwenn o to 23 in the last row of the matrix we will get the for wich of the number the subset is posible.
+		 
+	 
+	0,1,5,6,7,11,|| 12,16,17,18,22,,23 -----range
+        all these values are in pair by just knowing the s1 till range/2 we can get s2 as well
+		 
      
 	  vector<int> v;  
 	    
